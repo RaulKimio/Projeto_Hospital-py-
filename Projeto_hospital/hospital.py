@@ -19,11 +19,12 @@ def submenu_medicos():
     while op_medico < 1 or op_medico > 6:
         op_medico = int(input("Digite o número da opção desejada: "))
     
+    dados = ler_medicos()
+    
     if op_medico == 1:
-        dados = ler_medicos()
         listar_medicos(dados)
     elif op_medico == 2:
-        listar_medico_esp()
+        listar_medico_esp(dados)
     elif op_medico == 3:
         incluir_medico()
     elif op_medico == 4:
@@ -61,6 +62,53 @@ def listar_medicos(medicos):
     
     menu_opcoes()
     
+def listar_medico_esp(medicos):
+    print("##### Listar um médico específico #####")
+    print()
+    med = input("Digite o CRM do médico: ")
+    achou = False
+    for i in range(len(medicos)):
+        if med == medicos[i][0]:
+            achou = True
+            print(f'CRM: {medicos[i][0]}')
+            print(f'Nome: {medicos[i][1]}')
+            print(f'Data de nascimento: {medicos[i][2]}')
+            print(f'Sexo: {medicos[i][3]}')
+            print(f'Especialidade: {medicos[i][4]}')
+            print(f'Formado: {medicos[i][5]}')
+            
+            print(f'E-mails: ', end='')
+            for j in range(len(medicos[i][6])):
+                if j == len(medicos[i][6])-1:
+                    print(f'{medicos[i][6][j]}')
+                else:
+                    print(f'{medicos[i][6][j]}', end=', ')
+                    
+            print(f'Telefones: ', end='')
+            for j in range(len(medicos[i][7])):
+                if j == len(medicos[i][7])-1:
+                    print(f'{medicos[i][7][j]}')
+                else:
+                    print(f'{medicos[i][7][j]}', end=', ')
+            print()
+            
+    if achou == False:
+        print("Médico não encontrado")
+    
+    menu_opcoes()
+
+def incluir_medico(medicos):
+    # pedir e conferir CRM
+    novo_medico = input("Digite o CRM do novo médico: ")
+    for i in range(len(medicos)):
+        if novo_medico != medicos[i][0]:
+            a = a
+            
+    # pedir os outros dados
+    # montar a linha com ; e |
+    # abrir medicos.txt em modo "a" e gravar a linha
+    
+    
 ###################################################################################
 #                                   Pacientes                                     #
 ###################################################################################
@@ -81,9 +129,9 @@ def submenu_pacientes():
     
     while op_paciente < 1 or op_paciente > 6:
         op_paciente = int(input("Digite o número da opção desejada: "))
-    
+    dados=ler_pacientes()
     if op_paciente == 1:
-        listar_pacientes()
+        listar_pacientes(dados)
     elif op_paciente == 2:
         listar_paciente_esp()
     elif op_paciente == 3:
@@ -94,6 +142,34 @@ def submenu_pacientes():
         excluir_paciente()
     else:
         menu_opcoes()
+
+
+def listar_pacientes(pacientes):
+    print("##### Lista de Pacientes #####")
+    print()
+    for i in range(len(pacientes)):
+        print(f'CRM: {pacientes[i][0]}')
+        print(f'Nome: {pacientes[i][1]}')
+        print(f'Data de nascimento: {pacientes[i][2]}')
+        print(f'Sexo: {pacientes[i][3]}')
+        print(f'Plano: {pacientes[i][4]}')
+        
+        print(f'E-mails: ', end='')
+        for j in range(len(pacientes[i][5])):
+            if j == len(pacientes[i][5])-1:
+                print(f'{pacientes[i][5][j]}')
+            else:
+                print(f'{pacientes[i][5][j]}', end=', ')
+                
+        print(f'Telefones: ', end='')
+        for j in range(len(pacientes[i][6])):
+            if j == len(pacientes[i][6])-1:
+                print(f'{pacientes[i][6][j]}')
+            else:
+                print(f'{pacientes[i][6][j]}', end=', ')
+        print()
+    
+    menu_opcoes()
 
 ###################################################################################
 #                                   Consultas                                     #
@@ -151,7 +227,7 @@ def submenu_relatorios():
         op_relatorio = int(input("Digite o número da opção desejada: "))
     
     if op_relatorio == 1:
-        listar_pacientes()
+        listar_paciente()
     elif op_relatorio == 2:
         listar_paciente_esp()
     elif op_relatorio == 3:
@@ -192,9 +268,38 @@ def ler_medicos():
         medico.append(telefones)
         medicos.append(medico)
     
+    ref_arq.close()
+    
     return medicos
-            
+
+def ler_pacientes():
+    
+    pacientes = []
+    
+    ref_arq = open("Projeto_hospital/pacientes.txt", "r", encoding="utf-8")
+    
+    for linha in ref_arq:
+        lista = linha.split(";")
+        paciente = []
         
+        emails = lista[5].split("|")
+        
+        telefones = lista[6].split("|")
+        
+        for i in range(len(telefones)):
+            if i == len(telefones)-1:
+                telefones[i] = telefones[i][:-1]
+        
+        for i in range(len(lista)-2):
+            paciente.append(lista[i])
+        
+        paciente.append(emails)
+        paciente.append(telefones)
+        pacientes.append(paciente)
+
+    ref_arq.close()
+    
+    return pacientes
         
     
 ###################################################################################
