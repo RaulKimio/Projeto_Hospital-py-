@@ -1,3 +1,0 @@
-000.000.001-00;Lucas Ferreira;15/05/2015;M;Plano A;responsavel.lucas@example.com;(11) 0000-0011|(11) 0000-0012
-000.000.002-00;Beatriz Oliveira;22/08/1994;F;Plano B;beatriz@example.com|beatriz.contato@example.com;(11) 0000-0013
-000.000.003-00;Pedro Lima;10/01/2010;M;Particular;responsavel.pedro@example.com;(11) 0000-0014
