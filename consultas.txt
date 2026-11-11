@@ -1,0 +1,3 @@
+SP234567;000.000.001-00;07/11/2026;09:00;Consulta pediátrica de rotina;
+SP123456;000.000.002-00;08/11/2026;14:30;Avaliação cardiológica de rotina;
+SP234567;000.000.003-00;09/11/2026;10:15;Resfriado comum;Paracetamol|Soro fisiológico
