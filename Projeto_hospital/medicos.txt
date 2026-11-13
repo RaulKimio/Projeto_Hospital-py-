@@ -1,3 +1,4 @@
 SP123456;Mariana Costa;12/04/1982;F;Cardiologia;Universidade de São Paulo;mariana@example.com|mariana.clinica@example.com;(11) 0000-0001|(11) 0000-0002
 SP234567;Rafael Almeida;27/09/1978;M;Pediatria;Universidade Federal de São Paulo;rafael@example.com;(11) 0000-0003
 SP345678;Juliana Santos;03/02/1988;F;Cardiologia;Universidade Estadual de Campinas;juliana@example.com;(19) 0000-0004
+SP112006;Raul Kimio;05/11/2006;M;Cirurgião;IFSP;k.raul@aluno.ifsp.edu.br|raulmaeda06@gmail.com;(16) 99208-9574|(16) 99137-2020|(16) 98165-1109
